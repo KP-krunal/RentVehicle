@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+
+<!-- Mirrored from themesflat.co/html/motorxhtml/listing-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:41 GMT -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Motorx - Car Dealer, Rental & Listing</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style3.css">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="../static/images/logo/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="static/images/logo/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="static/css/map.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css.css">
+
+</head>
+
+<body class="body counter-scroll">
+
+    <!-- /#page -->
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <!-- Main Header -->
+            {% include 'master_header.html' %}
+            <!-- End Main Header -->
+
+            {% include 'messages.html'%}
+            <!-- property-detail -->
+            <div class="widget-property-detail">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="wrap-property-car flex">
+                                <div class="box-1">
+                                    <div class="icon-box-info flex">
+                                        <div class="info flex">
+                                            <span>Make:</span>
+                                            <span class="fw-4">{{ data.make }}</span>
+                                        </div>
+                                    
+                                        <div class="info flex">
+                                            <span>Body:</span>
+                                            <span class="fw-4">{{ data.vehicle_type }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="title-heading">{{ data.v_name }}</div>
+
+                                    <div class="text-address">
+                                        <i class="icon-map-1-1"></i>
+                                        <p>Usmanpura, Ahmedabad </p>
+                                    </div>
+                                </div>
+
+                                    <div class="col-lg-4 col-md-12">
+                                        <div class="box-2 t-al-right" >
+                                            <div class="price-wrap flex" style="margin-bottom: 5px; justify-content: center;" >
+                                                <p class="price-sale" style="font-size: 55px"> ₹ {{ data.price }}</p>
+                                            
+                                             </div>
+                                        </div>
+                                            <div class="driver-price-wrap mb-40">
+                                            <a class="test-driver mb-16"  href="/booking/{{data.id}}" role="button">
+                                                Book Your Seat
+                                                <i class="icon-steering-wheel-1"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="gallary-property-details">
+                                <div class="swiper property-gallary2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="/media/{{data.vehicle_image}}" alt="Image">
+                                        </div>
+                                       
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="post-property">
+                                <div class="wrap-description wrap-style">
+                                    <h4 class="title">Description</h4>
+                                    <p>{{ data.description }} </p>
+                                </div>
+                                <div class="wrap-car-overview wrap-style">
+                                    <h4 class="title">Car Overview</h4>
+                                    <div class="listing-info">
+                                        <div class="row">
+
+
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class=" icon-Vector-13"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">Stock Number:</span>
+                                                        <p class="listing-info-value"> {{ data.stock_no }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class="icon-Group5"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">Fuel Type:</span>
+                                                        <p class="listing-info-value">Electric</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class="icon-Vector-13"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">VIN Number:</span>
+                                                        <p class="listing-info-value">{{ data.VIN }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class="icon-Group-15"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">Doors:</span>
+                                                        <p class="listing-info-value">{{ data.doors}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class="icon-Vector-13"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">Year:</span>
+                                                        <p class="listing-info-value">{{ data.year }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class="icon-Format-color-fill"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">Color:</span>
+                                                        <p class="listing-info-value">{{ data.color }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class="icon-dashboard-2"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">Mileage: </span>
+                                                        <p class="listing-info-value">{{ data.mileage }} miles</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 item">
+                                                <div class="inner listing-infor-box">
+                                                    <div class="icon">
+                                                        <i class="icon-Group-22"></i>
+                                                    </div>
+                                                    <div class="content-listing-info">
+                                                        <span class="listing-info-title">Seats:</span>
+                                                        <p class="listing-info-value"> 5 </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- property-detail -->
+
+{% include 'master_footer.html' %}
+
+        </div>
+
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+
+    <!-- Modal-drive -->
+    <div class="modal  fade" id="test-driver" aria-hidden="true"  tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h3 class="card-title mb-0">Book a Vehicle</h3>
+                        <p class="text-muted mb-0 mt-1">Fill out the form below to book your rental car</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="bookingForm" class="needs-validation"  method="post" action="" novalidate>
+                            {% csrf_token%}
+                            <!-- User Selection -->
+                            <div class="mb-3">
+                                <label class="form-label"> Your Name </label>
+                                <input type="text" placeholder="user name" id="user_id" />
+                            </div>
+
+                            <!-- Vehicle Selection -->
+                            <div class="mb-3">
+                                <label class="form-label">Vehicle</label>
+                                {{ i.v_name }}
+                            </div>
+
+                            <!-- Dates -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label">Rental Date</label>
+                                    <input type="date" class="form-control datepicker" id="rental_date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Return Date</label>
+                                    <input type="date" class="form-control datepicker" id="return_date" required>
+                                </div>
+                            </div>
+
+                            <!-- Locations -->
+                            <div class="mb-3">
+                                <label class="form-label">Pickup Location</label>
+                                <input type="text" class="form-control" id="pickup_loc" placeholder="Enter pickup location" required>
+                               
+                            </div>
+
+                            <div class="mb-3">
+                                <label  class="form-label">Drop-off Location</label>
+                                <input type="text" class="form-control" id="drop_loc" placeholder="Enter drop-off location" required>
+                               
+                            </div>
+
+                            <!-- Total Cost -->
+                            <div class="mb-3">
+                                <label class="form-label">Total Cost</label>
+                                <div class="total-cost">
+                                    <span class="h4 mb-0">$<span id="total_cost"></span></span>
+                                    <small class="d-block text-muted mt-1">Calculated based on vehicle rate and rental duration</small>
+                                </div>
+                            </div>
+
+                            <!-- Submit Buttons -->
+                            <div class="d-flex justify-content-between mt-4" style="gap: 10px; padding-left: 50%;">
+                                <inpu type="button" class="btn btn-outline-secondary">
+                                    Cancel
+                                </inpu>
+                                <button type="submit" class="btn btn-danger" id="submitBtn">
+                                    Book Now
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal-price -->
+
+
+
+
+    <!-- Javascript -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.nice-select.min.js"></script>
+    <script src="/static/js/swiper-bundle.min.js"></script>
+    <script src="/static/js/swiper.js"></script>
+    <script src="/static/js/jquery-countTo.js"></script>
+    <script src="/static/js/nouislider.min.js"></script>
+    <script src="/static/js/price-ranger.js"></script>
+    <script src="/static/js/magnific-popup.min.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/map.min.js"></script>
+    <script src="/static/js/map.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/BookButton.js"></script>
+
+</body>
+
+
+<!-- Mirrored from themesflat.co/html/motorxhtml/listing-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:49 GMT -->
+</html>

@@ -1,0 +1,237 @@
+<!-- Main Header -->
+            <header id="header" class="main-header header header-fixed " style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
+                <script>
+                    function openModal() {
+                      document.getElementById("passwordModal").classList.add("show");
+                    }
+
+                    function closeModal() {
+                      document.getElementById("passwordModal").classList.remove("show");
+                    }
+                  </script>
+                <!-- Header Lower -->
+                {% if messages %}
+                {% for i in messages%}
+                    <script>alert("{{ i }}");</script>
+                {% endfor %}
+                {% endif %}
+                <div class="header-lower">
+                    <div class="themesflat-container w1700">
+                        <div class="row" >
+                            <div class="col-lg-12">
+                                <div class="inner-container flex justify-space align-center">
+                                    <!-- Logo Box -->
+                                    <div class="logo-box flex"> <a href="/index_page">
+                                        <img src="/static/images/logo/logo1.png" style="height: 100px; width: 100px;">
+                                            </a>
+                                    </div>
+                                    <div class="nav-outer flex align-center">
+                                        <!-- Main Menu -->
+                                        <nav class="main-menu show navbar-expand-md">
+                                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                                <ul class="navigation clearfix">
+                                                    <li class="current"><a href="/index_page">Home</a>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a href="/car_list_page">Cars</a>
+                                                    </li>
+                                                    <li><a href="/contact_page">Contact us </a>
+                                                    </li>
+                                                    <li><a href="/cargallery"> Our Gallery </a>
+                                                    </li>
+                                                    {% if request.session.log_name %}
+                                                    {% if request.session.log_role == "Employee" %}
+                                                     <li class="dropdown2">
+                                                        <a href="#">Page</a>
+                                                        <ul>
+                                                            <li><a href="/add_car_page">Add car</a></li>
+                                                            <li><a href="/maintain_page">Maintenance</a></li>
+                                                            <li><a href="/fetchgallery">Update Gallery</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    {% else %}
+                                                    <li><a href="/my-bookings">My Bookings</a>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% endif %}
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                        <!-- Main Menu End-->
+                                    </div>
+                                    <div class="header-account flex align-center">
+                                        <div class="register ml--18">
+                                            <div class="flex align-center">
+                                               <div class="flex align-center">
+                                                   <div class="dropdown">
+                                                       <button class="btn btn-outline-danger dropdown-toggle fw-bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                           {% if request.session.log_name %} <!-- User Name who Register-->
+                                                                {{ request.session.log_name }}
+                                                                    {% else %}
+                                                                        SignUp
+                                                           {% endif %}
+                                                       </button>
+                                                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                           {% if request.session.log_name %}
+                                                           <li><a class="dropdown-item fw-bold" href="/logout">
+                                                               Logout
+                                                           </a></li>
+                                                           <li><a href="#" onclick="openModal()" class="dropdown-item fw-bold">Forget Password?</a>
+                                                           </li>
+                                                           {% else %}
+                                                           <li><a class="dropdown-item fw-bold" href="/login_register_page">
+                                                               Register
+                                                           </a></li>
+                                                           {% endif %}
+                                                       </ul>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mobile-nav-toggler mobile-button">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header Lower -->
+
+
+                <!-- Mobile Menu  -->
+                <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
+                    <div class="mobile-menu">
+                    <div class="menu-backdrop"></div>
+                    <nav class="menu-box">
+                        <div class="nav-logo">
+                            <a href="index.html"><img src="static/images/logo/logo2%40.png" alt="Logo Motorx"></a>
+                        </div>
+                        <div class="bottom-canvas">
+                            <div class="menu-outer">
+                                <ul class="navigation clearfix">
+                                    <li class="dropdown2 current">
+                                        <a href="/index_page">Home</a>
+                                    </li>
+                                    <li class="dropdown2">
+                                        <a href="/car_list_page">Cars</a>
+                                    </li>
+
+                                    <li class="dropdown2">
+                                        <a href="/blog_page">News</a>
+                                    </li>
+                                    <li class="dropdown2"><a href="/contact_page">Contact Us</a>
+                                    </li>
+                                     {% if request.session.log_name %}
+                                    {% if request.session.log_role == "Employee" %}
+                                    <li class="dropdown2">
+                                        <a href="#">Page</a>
+                                        <ul>
+                                            <li><a href="/add_car_page">Add car</a></li>
+                                            <li><a href="/maintain_page">Maintenance</a></li>
+                                            <li><a href="/driver_page">Add Drivers</a></li>
+
+                                        </ul>
+                                        <div class="dropdown2-btn"></div>
+                                    </li>
+                                    {% endif %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                           <div class="flex align-center">
+                               <div class="dropdown">
+                                   <button class="btn btn-outline-danger dropdown-toggle fw-bold" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                       {% if request.session.log_name %} <!-- User Name who Register-->
+                                            {{ request.session.log_name }}
+                                                {% else %}
+                                                    SignUp
+                                       {% endif %}
+                                   </button>
+                                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                       {% if request.session.log_name %}
+                                       <li><a class="dropdown-item fw-bold" href="/logout">
+                                           Logout
+                                       </a></li>
+                                       {% else %}
+                                       <li><a class="dropdown-item fw-bold" href="/login_register_page">
+                                           Register
+                                       </a></li>
+                                       {% endif %}
+                                   </ul>
+                               </div>
+                           </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- End Mobile Menu -->
+                <div id="passwordModal" class="modal">
+                    <div class="modal-content">
+                      <span class="close" onclick="closeModal()">&times;</span>
+                      <h2 style="margin-bottom: 20px; color: #333;">Forget Password</h2>
+                      <form method="post" action="/reset_password">
+                        {% csrf_token %}
+                        <div class="input-field" style="position: relative; margin-bottom: 15px;">
+                          <i class="fas fa-envelope" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: #666;"></i>
+                          <input type="email" name="email" id="email" placeholder="✉️ Email" required
+                                 style="padding-left: 35px; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+                        </div>
+                        <div class="input-field" style="position: relative; margin-bottom: 20px;">
+                          <i class="fas fa-lock" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: #666;"></i>
+                          <input type="password" name="new_password" id="new_password" placeholder="🔑 New Password"
+                                 pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
+                                 title="At least one number, one uppercase and lowercase letter, and 8+ characters"
+                                 required
+                                 style="padding-left: 35px; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+                        </div>
+                        <button type="submit" class="test-driver mb-16">
+                          Reset Password
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+
+                <style>
+                    .modal {
+                      display: none;
+                      position: fixed;
+                      z-index: 1000;
+                      left: 0;
+                      top: 0;
+                      width: 100vw;
+                      height: 100vh;
+                      background-color: rgba(0, 0, 0, 0.5);
+                      justify-content: center;
+                      align-items: center;
+                    }
+
+                    .modal.show {
+                      display: flex;
+                    }
+
+                    .modal-content {
+                      background-color: #fff;
+                      padding: 30px;
+                      margin: 30%;
+                      width: 100%;
+                      border-radius: 12px;
+                      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                      position: relative;
+                    }
+
+                    .close {
+                      position: absolute;
+                      top: 10px;
+                      right: 15px;
+                      font-size: 24px;
+                      color: #aaa;
+                      cursor: pointer;
+                    }
+
+                    .close:hover {
+                      color: #333;
+                    }
+                    </style>
+
+            </header>
+<!-- End Main Header -->

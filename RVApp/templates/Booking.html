@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+
+<!-- Mirrored from themesflat.co/html/motorxhtml/listing-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:41 GMT -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Motorx - Car Dealer, Rental & Listing</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style3.css">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="static/images/logo/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="static/images/logo/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="static/css/map.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css.css">
+
+</head>
+
+<body class="body counter-scroll">
+
+    <!-- /#page -->
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <!-- Main Header -->
+            {% include 'master_header.html' %}
+            <!-- End Main Header -->
+        </div>
+
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+        <style>
+            .card-header{
+                display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+            }
+        </style>
+    
+            <div class="modal-content" style="margin-top: 10px; margin-bottom: 10px; padding: 0% 12% 1% 12%; border:none;"> 
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h3 class="card-title mb-0">Book a Vehicle</h3>
+                        <p class="text-muted mb-0 mt-1">Fill out the form below to book your rental car</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="bookingForm" class="needs-validation"  method="post" action="/book_car" novalidate>
+                            {% csrf_token%}
+                            <!-- User Selection -->
+                            <div class="mb-3">
+                                <label for="user" class="form-label"> Your Name </label>
+                                <input type="text" placeholder="user name" id="user_id" value="{{userdata.u_name}}" readonly />
+                                <input type="hidden" placeholder="user name" id="user_id"  name="user_id" value="{{userdata.id}}" readonly />
+                                
+                            </div>
+
+                            <!-- Vehicle Selection -->
+                            <div class="mb-3">
+                                <label for="vehicle" class="form-label">Vehicle</label>
+                                <input type="text" placeholder="vehicle name" id="vehicle_id" value="{{data.v_name}}" readonly />
+                                <input type="hidden" placeholder="vehicle name" id="vehicle_id" name="vehicle_id" value="{{data.id}}" readonly />
+                               
+                            </div>
+
+                            <!-- Dates -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="rentalDate" class="form-label">Rental Date</label>
+                                    <input type="date" class="form-control datepicker" id="rental_date"  name="rental_date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="returnDate" class="form-label">Return Date</label>
+                                    <input type="date" class="form-control datepicker" id="return_date" name="return_date" required>
+                                </div>
+                            </div>
+
+                            <!-- Locations -->
+                            <div class="mb-3">
+                                <label for="pickupLoc" class="form-label">Pickup Location</label>
+                                <input type="text" class="form-control" id="pickup_loc" placeholder="Enter pickup location" name="pickup_loc" required>
+                                
+                               
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="dropLoc" class="form-label">Drop-off Location</label>
+                                <input type="text" class="form-control" id="drop_loc" placeholder="Enter drop-off location" name="drop_loc" required>
+                               
+                            </div>
+
+                            <!-- Total Cost -->
+                            <div class="mb-3">
+                                <label class="form-label">Total Cost</label>
+                                <div class="total-cost">
+                                    <span class="h4 mb-0">₹ <span id="total_cost">{{data.price}}</span></span>
+                                    <small class="d-block text-muted mt-1">Calculated based on daily rate and rental duration</small>
+                                </div>
+                            </div>
+                            <input type="hidden" id="price_per_day" value="{{ data.price}}">
+
+                            <!-- Submit Buttons -->
+                            <div class="d-flex justify-content-between mt-4" style="gap: 10px; padding-left: 50%;">
+                                <button type="submit" class="btn btn-danger" id="submitBtn" style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+                                    Book Now
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const rentalDateInput = document.getElementById('rental_date');
+            const returnDateInput = document.getElementById('return_date');
+            const totalCostDisplay = document.getElementById('total_cost');
+            const pricePerDay = parseFloat(document.getElementById('price_per_day').value);
+    
+            // Set min date for rental as tomorrow
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const yyyy = tomorrow.getFullYear();
+            const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const dd = String(tomorrow.getDate()).padStart(2, '0');
+            const minRentalDate = `${yyyy}-${mm}-${dd}`;
+            rentalDateInput.setAttribute('min', minRentalDate);
+    
+            // When rental date is selected, update return date's min
+            rentalDateInput.addEventListener('change', function () {
+                const selectedRentalDate = new Date(this.value);
+                const nextDay = new Date(selectedRentalDate);
+                nextDay.setDate(nextDay.getDate() + 1);
+                const returnMin = `${nextDay.getFullYear()}-${String(nextDay.getMonth() + 1).padStart(2, '0')}-${String(nextDay.getDate()).padStart(2, '0')}`;
+                returnDateInput.setAttribute('min', returnMin);
+                returnDateInput.value = ""; // Clear old return date
+                calculateTotal(); // Reset cost
+            });
+    
+            // Calculate total cost on return date change
+            returnDateInput.addEventListener('change', calculateTotal);
+    
+            function calculateTotal() {
+                const rentalDate = new Date(rentalDateInput.value);
+                const returnDate = new Date(returnDateInput.value);
+    
+                if (rentalDate && returnDate && returnDate > rentalDate) {
+                    const days = Math.floor((returnDate - rentalDate) / (1000 * 60 * 60 * 24));
+                    const total = days * pricePerDay;
+                    totalCostDisplay.textContent = total;
+                } else {
+                    totalCostDisplay.textContent = {{data.price}};
+                }
+            }
+        });
+    </script>
+        
+    
+    <!-- Modal-price -->
+
+
+
+    {% include 'master_footer.html' %}
+    <!-- Javascript -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.nice-select.min.js"></script>
+    <script src="/static/js/swiper-bundle.min.js"></script>
+    <script src="/static/js/swiper.js"></script>
+    <script src="/static/js/jquery-countTo.js"></script>
+    <script src="/static/js/nouislider.min.js"></script>
+    <script src="/static/js/price-ranger.js"></script>
+    <script src="/static/js/magnific-popup.min.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/map.min.js"></script>
+    <script src="/static/js/map.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/BookButton.js"></script>
+
+</body>
+
+
+<!-- Mirrored from themesflat.co/html/motorxhtml/listing-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:49 GMT -->
+</html>

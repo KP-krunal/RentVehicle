@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'messages.html'%}
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in & Sign up Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+  {% comment %} <link rel="stylesheet" href="css/style.css" /> {% endcomment %}
+</head>
+<body>
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="forms-wrap">
+          <form action="/login" method='post' autocomplete="off" class="sign-in-form">
+              {%csrf_token%}
+            <div class="logo">
+              <img src="../media/logo/logo.png" alt="easyclass" />
+              <h4>RentVehicle</h4>
+            </div>
+
+            <div class="heading">
+              <h2>Welcome Back</h2>
+              <h6>Join electric vehicle community...</h6>
+              <a href="#" class="toggle">Register</a>
+
+            </div>
+
+            <div class="actual-form">
+              <div class="input-wrap">
+                <input type="Email" name="email2" class="input-field" autocomplete="off" required style=" border-radius: 10px;" />
+                <label>Email</label>
+              </div>
+
+              <div class="input-wrap">
+                <input type="password" name="password2" minlength="4" class="input-field" autocomplete="off" required style=" border-radius: 10px;"  />
+                <label>Password</label>
+              </div>
+
+              <input type="submit" value="Sign In" class="sign-btn" />
+                </div>
+
+          </form>
+          
+
+
+<form method="post" action="/fetchregister" enctype="multipart/form-data" class="sign-up-form">
+    {% csrf_token %}
+
+    <div class="input-warp dropdown-wrapper">
+        <select id="selectRole" name="role" required style="    border: 1px solid blue; padding: 6px; border-radius: 8px; font-size: 13px; font-weight: bold; ">
+            <option value="" disabled selected>Select Who Want to Register</option>
+            <option value="User">User</option>
+            <option value="Employee">Employee</option>
+        </select>
+    </div>
+
+    <div class="actual-form">
+        <div class="input-wrap">
+            <input type="text" name="u_name" class="input-field" required style=" border-radius: 10px;" pattern="[A-Za-z\s]+"
+        title="Only letters and spaces are allowed" required  />
+            <label>Full Name</label>
+        </div>
+
+        <div class="input-wrap">
+            <input type="email" name="u_email" class="input-field" required style=" border-radius: 10px;" />
+            <label>Email</label>
+        </div>
+
+        <div class="input-wrap">
+            <input type="tel" name="u_phone" class="input-field" required style=" border-radius: 10px;" />
+            <label>Phone No.</label>
+        </div>
+
+        <div class="input-wrap">
+            <input type="text" name="u_address" class="input-field" required style=" border-radius: 10px;" />
+            <label>Address</label>
+        </div>
+
+        <div class="input-wrap">
+            <input type="password" name="u_password" class="input-field" required style=" border-radius: 10px;"  />
+            <label>Password</label>
+        </div>
+
+        <div class="input-wrap">
+            <input type="file" name="id_proof1" class="input-field" style=" border-radius: 10px;" />
+            <label style=" top: 0rem; ">Upload ID Proof</label>
+        </div>
+
+        <input type="submit" value="Signup" class="sign-btn">
+    </div>
+</form>
+        </div>
+
+        <div class="carousel">
+          <div class="images-wrapper">
+            <img src="static/images/login-images/img1_2.png" class="image img-1 show" alt="" />
+            <img src="static/images/login-images/img2.png" class="image img-2" alt="" />
+            <img src="static/images/login-images/img3.png" class="image img-3" alt="" />
+          </div>
+
+          <div class="text-slider">
+            <div class="text-wrap">
+              <div class="text-group">
+                <h2>Book Your Electric Drive</h2>
+                <h2>Join Our EV Journey</h2>
+                <h2>EVs: Your Joyful Ride</h2>
+              </div>
+            </div>
+
+            <div class="bullets">
+              <span class="active" data-value="1"></span>
+              <span data-value="2"></span>
+              <span data-value="3"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+      <script>
+    // Show ID proof input when either User or Vendor is selected
+    document.querySelectorAll('input[name="usertype"]').forEach(input => {
+        input.addEventListener('change', function() {
+            const idProofGroup = document.getElementById('id-proof-group');
+            if (this.value === 'User' || this.value === 'Employee') {
+                idProofGroup.style.display = 'block'; // Show ID proof input
+            } else {
+                idProofGroup.style.display = 'none'; // Hide ID proof input
+            }
+        });
+    });
+</script>
+  </main>
+
+  <!-- Javascript file -->
+ {% load static %}
+  <script src="{% static 'js/app.js' %}"></script>
+<!--  <script src="app.js"></script>-->
+</body>
+
+</html>

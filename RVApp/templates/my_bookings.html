@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookings</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style3.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body class="body counter-scroll">
+
+<div id="wrapper">
+    <div id="page" class="clearfix">
+
+        {% include 'master_header.html' %}
+
+        <div class="modal-content" style="margin-top: 30px; margin-bottom: 30px;">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h3 class="card-title mb-0">Your Bookings</h3>
+                    <p class="text-muted mt-1">View your car rental bookings</p>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Vehicle</th>
+                                    <th>Rental Date</th>
+                                    <th>Return Date</th>
+                                    <th>Pickup</th>
+                                    <th>Drop-off</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Payment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for booking in bookings %}
+                                <tr>
+                                    <td>{{ booking.vehicle_id.v_name }}</td>
+                                    <td>{{ booking.rental_date }}</td>
+                                    <td>{{ booking.return_date }}</td>
+                                    <td>{{ booking.pickup_loc }}</td>
+                                    <td>{{ booking.drop_loc }}</td>
+                                    <td>{{ booking.status }}</td>
+                                    <td>₹{{ booking.total_cost }}</td>
+                                    <td>
+                                        {% if booking.status == "Pending" and booking.payment %}
+                                        <button 
+                                            type="button" class="btn btn-primary"
+                                            onclick="payNow('{{ booking.payment.razorpay_order_id }}', '{{ booking.total_cost }}', '{{ booking.id }}')">
+                                            Pay Now
+                                        </button>
+                                        {% elif booking.status == "Confirmed" %}
+    <span class="text-success fw-bold">Paid</span>
+    {% if not booking.review %}
+    <br>
+    <a href="{% url 'leave_review' booking.id %}" class="btn btn-outline-success btn-sm mt-1">Give Feedback</a>
+    {% endif %}
+                                        <!-- {% elif booking.status == "Confirmed" %}
+                                            <span class="text-success fw-bold">Paid</span>
+                                        {% else %}
+                                            <span class="text-muted">N/A</span>
+                                        {% endif %} -->
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'master_footer.html' %}
+
+    </div>
+</div>
+
+<script>
+    function payNow(orderId, amount, bookingId) {
+        var options = {
+            "key": "{{ razorpay_key }}",
+            "amount": amount * 100,
+            "currency": "INR",
+            "name": "Car Rental",
+            "description": "Booking Payment",
+            "order_id": orderId,
+            "handler": function (response) {
+                fetch("{% url 'payment_success' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+                    body: JSON.stringify({
+                        booking_id: bookingId,
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_signature: response.razorpay_signature
+                    })
+                }).then(res => location.reload());
+            }
+        };
+        var rzp = new Razorpay(options);
+        rzp.open();
+    }
+</script>
+
+<!-- Scripts -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>
+

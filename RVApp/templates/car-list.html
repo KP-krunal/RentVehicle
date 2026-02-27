@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+  <!--<![endif]-->
+
+  <!-- Mirrored from themesflat.co/html/motorxhtml/car-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:40 GMT -->
+
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8" />
+    <!--[if IE
+      ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    /><![endif]-->
+    <title>Motorx - Car Dealer, Rental & Listing</title>
+
+    <meta name="author" content="themesflat.com" />
+
+    <!-- Mobile Specific Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/style3.css" />
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="static/images/logo/favicon.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="static/images/logo/logo.png"
+    />
+
+    <link rel="stylesheet" type="text/css" href="static/css/map.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/nice-select.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css.css" />
+  </head>
+
+  <body class="body counter-scroll">
+    <!-- preload -->
+    <!--    <div class="preload preload-container">-->
+    <!--        <div class="middle">-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!-- /preload -->
+
+    <!-- /#page -->
+    <div id="wrapper">
+      <div id="page" class="clearfix">
+        <!-- Start Navigation Bar -->
+        {% include 'master_header.html' %}
+        <!-- End Navigation Bar -->
+
+        <!-- car-listing-list -->
+        <div class="widget-banner-car-listing banner-car-listing-list">
+          <div class="themesflat-container full">
+            <div class="banner-car-listing">
+              <h1 class="title text-white">
+                RentVehicle <span class="text-red">Rental</span> Service
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- car-listing-list -->
+        <div class="widget-car-listing-list">
+          <div class="themesflat-container">
+            <div class="row car-listing-list" style="justify-content: center">
+              <div class="col-md-12 col-lg-15 listing-list-car-wrap">
+                <div class="tab-content" id="nav-listing-car">
+                  <style>
+                    .car-card {
+                      height: 100%;
+                      border: 1px solid #ddd;
+                      border-radius: 10px;
+                      overflow: hidden;
+                      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                      display: flex;
+                      flex-direction: column;
+                    }
+                    .card:hover {
+                      transform: scale(1.02);
+                      transition: all 0.3s ease-in-out;
+                      border: none;
+                    }
+                    .card {
+                      border: none;
+                    }
+                    .car-card .listing-item-image img {
+                      width: 100%;
+                      height: 200px;
+                      /* Fixed height for uniformity */
+                      object-fit: cover;
+                      /* Prevents stretching */
+                      border-bottom: 1px solid #ccc;
+                    }
+
+                    .car-card .listing-item-content {
+                      padding: 15px;
+                      flex-grow: 1;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: space-between;
+                    }
+
+                    .car-card .description ul {
+                      padding-left: 0;
+                      list-style: none;
+                      display: flex;
+                      justify-content: space-around;
+                    }
+
+                    .btn-read-more {
+                      margin-top: 10px;
+                    }
+                    .span {
+                      color: black;
+                    }
+                  </style>
+
+                  <div
+                    class="tab-pane fade show active"
+                    id="all"
+                    role="tabpanel"
+                    aria-labelledby="all-tab"
+                    tabindex="0"
+                  >
+                    <div class="row">
+                      {% for i in car %}
+                      <div class="col-md-4 mb-14 card">
+                        <div class="car-card">
+                          <div class="listing-item-image">
+                            <img
+                              src="/media/{{ i.vehicle_image }}"
+                              class="swiper-image tfcl-light-gallery"
+                              alt="{{ i.v_name }}"
+                            />
+                          </div>
+                          <div class="listing-item-content">
+                            <div>
+                              <div class="info flex mb-2">
+                                <span style="color: Black">Make:</span>
+                                <span class="fw-4 ms-1" style="color: red"
+                                  >{{ i.make}}</span
+                                >
+                              </div>
+                              <h6 class="title mb-2">
+                                <a href="/single_car/{{ i.id }}"
+                                  >{{ i.v_name }}</a
+                                >
+                              </h6>
+                              <div class="description">
+                                <ul>
+                                  <li class="listing-information fuel">
+                                    <i
+                                      class="icon-gasoline-pump-1"
+                                      style="color: red"
+                                    ></i>
+                                    <div class="inner">
+                                      <span class="span">Fuel type</span>
+                                      <p>Electric</p>
+                                    </div>
+                                  </li>
+                                  <li class="listing-information size-engine">
+                                    <i
+                                      class="icon-Group1"
+                                      style="color: red"
+                                    ></i>
+                                    <div class="inner">
+                                      <span class="span">Mileage</span>
+                                      <p>{{ i.mileage }}</p>
+                                    </div>
+                                  </li>
+                                  <li class="listing-information transmission">
+                                    <i
+                                      class="icon-Format-color-fill"
+                                      style="color: red"
+                                    ></i>
+                                    <div class="inner">
+                                      <span class="span">Color</span>
+                                      <p>{{ i.color }}</p>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="bottom-price-wrap">
+                              <div class="price-wrap">
+                                <p
+                                  class="price-sale"
+                                  style="
+                                    color: Red;
+                                    font-size: 20px;
+                                    margin: 17px 0px 17px 0px;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  ₹ {{ i.price }}
+                                </p>
+                              </div>
+                              <div
+                                class="btn-read-more"
+                                style="display: flex; justify-content: center"
+                              >
+                                <a
+                                  class="more-link"
+                                  href="/single_car/{{ i.id }}"
+                                >
+                                  <span>View details</span>
+                                  <i class="icon-arrow-right2"></i>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Footer -->
+        {% include 'master_footer.html' %}
+        <!-- End Footer -->
+      </div>
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+
+    <!-- Javascript -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.nice-select.min.js"></script>
+    <script src="static/js/swiper-bundle.min.js"></script>
+    <script src="static/js/swiper.js"></script>
+    <script src="static/js/jquery-countTo.js"></script>
+    <script src="static/js/nouislider.min.js"></script>
+    <script src="static/js/price-ranger.js"></script>
+    <script src="static/js/magnific-popup.min.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <script src="static/js/map.min.js"></script>
+    <script src="static/js/map.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/BookButton.js"></script>
+  </body>
+
+  <!-- Mirrored from themesflat.co/html/motorxhtml/car-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:41 GMT -->
+</html>

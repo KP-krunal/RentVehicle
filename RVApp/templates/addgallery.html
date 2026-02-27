@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+
+<!-- Mirrored from themesflat.co/html/motorxhtml/addcart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:53 GMT -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Motorx - Car Dealer, Rental & Listing</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="static/images/logo/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="static/images/logo/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="static/css/map.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css.css">
+
+<style>
+    .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-submit {
+            margin-top: 20px;
+        }
+</style>
+</head>
+
+<body class="body counter-scroll">
+
+    <!-- /#page -->
+    <div id="wrapper">
+
+<!-- Start Navigation Bar -->
+ {% include 'master_header.html' %}
+<!-- End Navigation Bar -->
+            <div class="tf-widget-add-cart">
+                <div class="themesflat-container">
+                    <div class="tf-add-cart">
+                        <div class="container form-container">
+                            <form action="/fetchgallarydata" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="g_img" class="form-label">Vehicle Image</label>
+                                                <input type="file" class="form-control" id="g_img" name="g_img" accept="image/*">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="g_name" class="form-label">Vehicle Name</label>
+                                                <input type="text" class="form-control" id="g_name" name="g_name" required>
+                                            </div> 
+                                        </div>
+                                        <button type="submit" class="btn btn-dark btn-submit">Add Gallery</button>
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<!-- Start Footer -->
+  {% include 'master_footer.html' %}
+<!-- End Footer -->
+        </div>
+
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+
+
+    <!-- Javascript -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.nice-select.min.js"></script>
+    <script src="static/js/swiper-bundle.min.js"></script>
+    <script src="static/js/swiper.js"></script>
+    <script src="static/js/jquery-countTo.js"></script>
+    <script src="static/js/nouislider.min.js"></script>
+    <script src="static/js/price-ranger.js"></script>
+    <script src="static/js/magnific-popup.min.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <script src="static/js/map.min.js"></script>
+    <script src="static/js/map.js"></script>
+    <script src="static/js/main.js"></script>
+
+</body>
+
+
+<!-- Mirrored from themesflat.co/html/motorxhtml/addcart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Dec 2024 13:08:53 GMT -->
+</html>

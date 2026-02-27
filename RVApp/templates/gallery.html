@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RentVehicle</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css"
+    />
+    <link rel="stylesheet" href="static/gallery.css" />
+    <!-- Mobile Specific Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/style3.css" />
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="media/logo/logo.png" />
+    <link rel="stylesheet" type="text/css" href="static/css/nice-select.css" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="static/images/logo/favicon.png"
+    />
+  </head>
+  <body>
+    {% include 'master_header.html' %}
+    <div
+      class="container gallery-container"
+      style="display: flex; flex-direction: column; align-items: center"
+    >
+      <h2 style="margin-top: 30px; margin-bottom: 30px">
+        Our Collection of <span style="color: red"> Rental Cars </span>
+      </h2>
+      <style>
+        .gallery-thumbnail {
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+            rgba(0, 0, 0, 0.23) 0px 3px 6px;
+          margin-bottom: 20px;
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .gallery-thumbnail:hover {
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px,
+            rgba(0, 0, 0, 0.19) 0px 3px 5px;
+          transform: scale(1.05);
+          transition: all 0.3s ease-in-out;
+          filter: brightness(1.5);
+        }
+
+        .gallery-thumbnail img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          display: block;
+          border-radius: 5px;
+        }
+
+        .caption {
+          padding: 10px 0;
+          text-align: center;
+          font-weight: bold;
+        }
+      </style>
+
+      <div class="tz-gallery">
+        <div class="row">
+          {% for i in gdata %}
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail gallery-thumbnail">
+              <img src="/media/{{ i.g_img }}" alt="Park" />
+              <div class="caption">
+                <h5>{{ i.g_name }}</h5>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% include 'master_footer.html' %}
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.nice-select.min.js"></script>
+    <script src="static/js/swiper-bundle.min.js"></script>
+    <script src="static/js/swiper.js"></script>
+    <script src="static/js/jquery-countTo.js"></script>
+    <script src="static/js/nouislider.min.js"></script>
+    <script src="static/js/price-ranger.js"></script>
+    <script src="static/js/magnific-popup.min.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <script>
+      baguetteBox.run(".tz-gallery");
+    </script>
+  </body>
+</html>
