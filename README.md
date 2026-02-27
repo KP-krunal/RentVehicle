@@ -2,33 +2,47 @@
 
 A Vehicle Rental Management System built using Django.
 
+---
+
 ## 📌 Features
 - Vehicle Listing
 - Booking System
 - Admin Panel
 - Contact Form
 
+---
+
 ## 🛠 Tech Stack
-- Python 3
+- Python
 - Django
 - SQLite
 - HTML, CSS, JavaScript
 
-## 🚀 Installation Guide
+---
 
-1. Clone the repository:
-   git clone https://github.com/KP-krunal/RentVehicle.git
+## 📸 Project Screenshots
 
-2. Move into project folder:
-   cd RentVehicle
+### 🏠 Home Page
+![Home Page](screenshots/home.png)
 
-3. Install dependencies:
-   pip install -r requirements.txt
+### 🚗 Vehicle Listing
+![Vehicle Page](screenshots/vehicles.png)
 
-4. Run the server:
-   python manage.py runserver
+### 📅 Booking Page
+![Booking Page](screenshots/booking.png)
 
-## 📷 Future Improvements
-- Online Payment Integration
-- User Authentication
-- Deployment to Cloud
+### 🔐 Admin Panel
+![Admin Page](screenshots/admin.png)
+
+### 📩 Contact Page
+![Contact Page](screenshots/contact.png)
+
+---
+
+## 🚀 How To Run
+
+```bash
+git clone https://github.com/KP-krunal/RentVehicle.git
+cd RentVehicle
+pip install -r requirements.txt
+python manage.py runserver
