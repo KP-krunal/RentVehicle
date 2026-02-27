@@ -1,22 +1,28 @@
 # 🚗 RentVehicle - Django Project
 
-A Vehicle Rental Management System built using Django.
+A Vehicle Rental Management System built using Django.  
+Users can browse cars, register, login, and contact the company.
 
 ---
 
 ## 📌 Features
-- Vehicle Listing
-- Booking System
-- Admin Panel
-- Contact Form
+
+- 🏠 Home Page
+- 🚘 Car Listing Page
+- 🔐 User Registration & Login
+- 📩 Contact Us Form
+- 🛠 Django Admin Panel
 
 ---
 
 ## 🛠 Tech Stack
-- Python
+
+- Python 3
 - Django
 - SQLite
-- HTML, CSS, JavaScript
+- HTML5
+- CSS3
+- JavaScript
 
 ---
 
@@ -25,21 +31,29 @@ A Vehicle Rental Management System built using Django.
 ### 🏠 Home Page
 ![Home Page](screenshots/home.png)
 
-### 🚗 Vehicle Listing
-![Vehicle Page](screenshots/vehicles.png)
+---
 
-### 📅 Booking Page
-![Booking Page](screenshots/booking.png)
-
-### 🔐 Admin Panel
-![Admin Page](screenshots/admin.png)
-
-### 📩 Contact Page
-![Contact Page](screenshots/contact.png)
+### 🚘 Cars Listing Page
+![Cars Page](screenshots/cars.png)
 
 ---
 
-## 🚀 How To Run
+### 🔐 Login Page
+![Login Page](screenshots/login.png)
+
+---
+
+### 📝 Register Page
+![Register Page](screenshots/register.png)
+
+---
+
+### 📩 Contact Us Page
+![Contact Page](screenshots/contact us.png)
+
+---
+
+## 🚀 Installation Guide
 
 ```bash
 git clone https://github.com/KP-krunal/RentVehicle.git
